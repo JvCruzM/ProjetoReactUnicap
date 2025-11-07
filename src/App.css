@@ -1,42 +1,226 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* =========================================================
+ 🎨 VARIÁVEIS GLOBAIS
+========================================================= */
+:root {
+  /* Cores principais (modo claro) */
+  --roxo: #7c3aed;
+  --roxo-escuro: #5b21b6;
+  --neve: #f9fafb;
+  --grafite: #1f2937;
+  --cinza: #e5e7eb;
+  --cinza-hover: #d1d5db;
+  --sombra: rgba(0, 0, 0, 0.1);
+
+  /* Paleta do modo escuro */
+  --fundo-escuro: #1e1e2e;
+  --texto-escuro: #e2e8f0;
+  --cinza-escuro: #2b2b3c;
+  --cinza-hover-escuro: #3a3a4f;
+}
+
+/* =========================================================
+ 🧍 CONFIGURAÇÃO DO BODY / BACKGROUND
+========================================================= */
+body {
+  padding-top: 80px;
+  padding-bottom: 60px;
+  background-color: var(--neve);
+}
+
+/* =========================================================
+ 🧱 CONTAINER PRINCIPAL DO APP
+========================================================= */
+.app {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--sombra);
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
   text-align: center;
+  margin: 0 auto;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* =========================================================
+ 🏷️ CABEÇALHO E TÍTULO
+========================================================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.titulo {
+  color: var(--roxo);
+  margin-bottom: 20px;
+  font-size: 1.6rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* =========================================================
+ 🌗 BOTÃO DE ALTERNAÇÃO DE TEMA
+========================================================= */
+.tema-btn {
+  background: none;
+  border: 2px solid var(--roxo);
+  color: var(--roxo);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.card {
-  padding: 2em;
+.tema-btn:hover {
+  background-color: var(--roxo);
+  color: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+/* =========================================================
+ ✏️ ÁREA DE INPUT E BOTÃO DE ADIÇÃO
+========================================================= */
+.input-area {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid var(--cinza);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--roxo);
+}
+
+.botao {
+  background-color: var(--roxo);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.botao:hover {
+  background-color: var(--roxo-escuro);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+ 🗒️ LISTA DE TAREFAS
+========================================================= */
+.lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* Cada item da lista */
+.item {
+  color: var(--cinza-escuro);
+  background-color: var(--cinza);
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item:hover {
+  background-color: var(--cinza-hover);
+}
+
+/* =========================================================
+ ❌ BOTÃO DE REMOVER TAREFA
+========================================================= */
+.remover-btn {
+  background: none;
+  border: none;
+  color: #ef4444; /* vermelho */
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: auto;
+  transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.remover-btn:hover {
+  color: #dc2626;
+  transform: scale(1.2);
+}
+
+/* =========================================================
+ 🌙 TEMA ESCURO
+========================================================= */
+
+/* Fundo e texto base */
+body.dark {
+  background-color: var(--fundo-escuro);
+  color: var(--texto-escuro);
+}
+
+/* Cartão principal */
+body.dark .app {
+  background: var(--cinza-escuro);
+  color: var(--texto-escuro);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+body.dark .titulo {
+  color: var(--texto-escuro);
+}
+
+/* Campo de input */
+body.dark .input {
+  background: var(--fundo-escuro);
+  border-color: var(--cinza-hover-escuro);
+  color: var(--texto-escuro);
+}
+
+body.dark .input:focus {
+  border-color: var(--roxo);
+}
+
+/* Itens da lista */
+body.dark .item {
+  color: var(--cinza);
+  background: var(--cinza-hover-escuro);
+}
+
+body.dark .item:hover {
+  background: var(--roxo-escuro);
+  color: #fff;
+}
+
+/* Botão de tema no escuro */
+body.dark .tema-btn {
+  border-color: #c4b5fd;
+  color: #c4b5fd;
+}
+
+body.dark .tema-btn:hover {
+  background: #c4b5fd;
+  color: #1e1e2e;
+}
+
+/* Botão de remover no escuro */
+body.dark .remover-btn {
+  color: #f87171;
+}
+
+body.dark .remover-btn:hover {
+  color: #ef4444;
 }
